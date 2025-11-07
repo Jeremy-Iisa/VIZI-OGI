@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Image Generation - Media AI Generator</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #0D1B2A; /* Dark blue theme */
+        color: #fff;
+    }
+
+    /* Header styles for back button */
+    .header {
+        position: relative;
+        width: 100%;
+        padding: 10px 20px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-end;
+        background-color: transparent;
+        z-index: 2;
+    }
+
+    .back-button {
+        padding: 8px 16px;
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: background 0.3s;
+    }
+
+    .back-button:hover {
+        background-color: #555;
+    }
+
+    /* Banner styles with solid dark blue background */
+    .banner {
+        position: relative;
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #0D1B2A; /* Solid dark blue */
+        padding: 20px;
+        text-align: center;
+        z-index: 1;
+    }
+
+    /* Heading placeholder styling */
+    .banner-heading {
+        position: relative;
+        font-size: 36px;
+        font-weight: bold;
+        z-index: 1;
+        padding: 10px 20px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+    }
+
+    /* Bottom placeholder for user input and button */
+    .input-area {
+        position: relative;
+        margin-top: 20px;
+        width: 100%;
+        max-width: 600px;
+        background: rgba(255,255,255,0.1);
+        padding: 20px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        z-index: 1;
+    }
+
+    /* Textarea styling */
+    #descriptionInput {
+        width: 100%;
+        min-height: 80px;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        margin-bottom: 15px;
+        background-color: #333;
+        color: #fff;
+        resize: vertical;
+    }
+
+    /* Generate Button styles */
+    #generateBtn {
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        background-color: #4CAF50;
+        color: #fff;
+        cursor: pointer;
+        opacity: 0.6; /* Disabled state */
+        transition: background 0.3s, opacity 0.3s;
+        margin-top: 10px;
+    }
+
+    #generateBtn.enabled {
+        opacity: 1;
+    }
+
+    #generateBtn:hover {
+        background-color: #45a049;
+    }
+
+    /* Credits note below button */
+    .credits {
+        font-size: 14px;
+        margin-top: 10px;
+        color: #ccc;
+        text-align: center;
+    }
+
+    /* Optional: Additional content below */
+    .content {
+        padding: 20px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Header with Back to Home button -->
+<div class="header">
+  <a href="index.html" class="back-button">Back to Home</a>
+</div>
+
+<!-- Banner with solid dark blue background -->
+<div class="banner">
+  <div class="banner-heading">Image Generation</div>
+  <!-- Placeholder for user input and generate button -->
+  <div class="input-area">
+    <textarea id="descriptionInput" placeholder="Enter your description and imagination..."></textarea>
+    <button id="generateBtn" disabled>Generate</button>
+    <div class="credits">On Free Trial API usage: GET PRO VERSION FOR HIGH QUALITY IMAGES </div>
+  </div>
+</div>
+
+<!-- Optional: Additional content below -->
+<div class="content">
+  <!-- You can add your generated images or gallery here -->
+</div>
+
+<script>
+  const input = document.getElementById('descriptionInput');
+  const btn = document.getElementById('generateBtn');
+
+  // Enable button when input has text
+  input.addEventListener('input', () => {
+    if (input.value.trim()) {
+      btn.disabled = false;
+      btn.classList.add('enabled');
+    } else {
+      btn.disabled = true;
+      btn.classList.remove('enabled');
+    }
+  });
+
+  // Handle generate button click
+  btn.addEventListener('click', () => {
+    alert('Generating image for: ' + input.value);
+    // Here, you can add your logic to call AI image generation API
+  });
+</script>
+
+</body>
+</html>

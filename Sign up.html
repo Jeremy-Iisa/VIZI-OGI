@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sign Up - Media AI Generator</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #0D1B2A;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    /* Main container for sign-up form */
+    .signup-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+    }
+
+    /* Form styles */
+    .signup-form {
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 30px;
+        border-radius: 10px;
+        max-width: 400px;
+        width: 100%;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        display: flex;
+        flex-direction: column;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #00b4d8;
+        font-size: 24px;
+    }
+
+    label {
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    input[type="text"], input[type="password"] {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+        background-color: #333;
+        color: #fff;
+        outline: none;
+    }
+
+    /* Sign Up Button */
+    .signup-btn {
+        margin-top: 20px;
+        padding: 12px;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .signup-btn:hover {
+        background-color: #45a049;
+    }
+
+    /* Terms and Conditions checkbox */
+    .terms {
+        margin-top: 15px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+    }
+    .terms input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+    /* Social login buttons container */
+    .social-login {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 30px;
+    }
+
+    .social-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+        border: none;
+        width: 100%;
+        color: #fff;
+    }
+
+    .google-btn {
+        background-color: #DB4437;
+    }
+    .google-btn:hover {
+        background-color: #c33d2f;
+    }
+
+    .apple-btn {
+        background-color: #000;
+    }
+    .apple-btn:hover {
+        background-color: #222;
+    }
+
+    /* Icons in social buttons */
+    .social-icon {
+        margin-right: 10px;
+        font-size: 20px;
+    }
+
+    /* Back to Home button */
+    .back-home {
+        margin-top: 20px;
+        align-self: flex-start;
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 16px;
+        transition: background 0.3s;
+    }
+    .back-home:hover {
+        background-color: #45a049;
+    }
+
+    /* Footer styles */
+    footer {
+        background-color: #1B263B;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .footer-left {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        height: 40px;
+        margin-right: 10px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Sign Up Form -->
+<div class="signup-container">
+    <form class="signup-form" id="signupForm" onsubmit="return validateSignup()">
+        <h2>Create Account</h2>
+        <label for="newUsername">Username/Email Address</label>
+        <input type="text" id="newUsername" placeholder="Enter Username/EmailAddress" required />
+
+        <label for="newPassword">Password</label>
+        <input type="password" id="newPassword" placeholder="Enter Password" required />
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+
+        <div class="terms">
+            <input type="checkbox" id="terms" />
+            <label for="terms">Agree to our Terms and Conditions</label>
+        </div>
+
+        <button type="submit" class="signup-btn">Sign Up</button>
+
+        <!-- Seamless Google and Apple Sign Up Buttons -->
+        <div class="social-login">
+            <button type="button" class="social-btn google-btn" onclick="googleSignUp()">
+                <span class="social-icon">🔍</span> Sign up with Google
+            </button>
+            <button type="button" class="social-btn apple-btn" onclick="appleSignUp()">
+                <span class="social-icon"></span> Sign up with Apple
+            </button>
+        </div>
+
+        <a href="HOME no account.html" class="back-home">Back to Home</a>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-left">
+        <img src="logo.jpg" alt="Logo" class="logo" />
+        <span>Media AI Generator</span>
+    </div>
+</footer>
+
+<script>
+    function validateSignup() {
+        const username = document.getElementById('newUsername').value.trim();
+        const password = document.getElementById('newPassword').value.trim();
+        const confirmPassword = document.getElementById('confirmPassword').value.trim();
+        const termsAccepted = document.getElementById('terms').checked;
+
+        if (!username || !password || !confirmPassword) {
+            alert('Please fill out all fields.');
+            return false;
+        }
+        if (password !== confirmPassword) {
+            alert('Passwords do not match.');
+            return false;
+        }
+        if (!termsAccepted) {
+            alert('You must agree to the Terms and Conditions.');
+            return false;
+        }
+        // All conditions met, redirect to index.html
+        window.location.href = 'index.html';
+        return false; // prevent default form submission
+    }
+
+    // Placeholder functions for social signups
+    function googleSignUp() {
+        alert("Google sign-up is not implemented in this demo.");
+        // Implement Google OAuth here
+    }
+
+    function appleSignUp() {
+        alert("Apple sign-up is not implemented in this demo.");
+        // Implement Apple OAuth here
+    }
+</script>
+
+</body>
+</html>

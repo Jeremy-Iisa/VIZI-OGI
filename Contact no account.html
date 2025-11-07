@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Us - VIZI IGI</title>
+<!-- Font Awesome for social media icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  /* Reset styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0d1b2a; /* Dark blue background */
+    color: #ffffff;
+    line-height: 1.6;
+  }
+
+  /* Header styles */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #142b46;
+    flex-wrap: wrap;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    width: 150px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-left: 15px;
+    font-weight: bold;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin-top: 10px;
+  }
+
+  .nav-links li {
+    margin-left: 20px;
+  }
+
+  .nav-links a {
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 8px 12px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-links a:hover {
+    background-color: #1b3a57;
+    border-radius: 5px;
+  }
+
+  /* User icon styles */
+  .user-account {
+    margin-left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .user-account:hover {
+    color: #00b4d8;
+  }
+
+  /* Main content styles */
+  main {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Contact Info Banner */
+  .contact-banner {
+    background-color: #1b3a57;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+  }
+
+  .contact-banner h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .contact-info p {
+    font-size: 16px;
+  }
+
+  /* Feedback Form */
+  .feedback-form {
+    background-color: #1b3a57;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .feedback-form h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .feedback-form textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    resize: vertical;
+  }
+
+  .submit-btn {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 12px 24px;
+    background-color: #00b4d8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .submit-btn:hover {
+    background-color: #0099c7;
+  }
+
+  /* Footer styles */
+  footer {
+    background-color: #142b46;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .social-icons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .social-icons a {
+    color: #ffffff;
+    font-size: 24px;
+    transition: color 0.3s;
+  }
+
+  .social-icons a:hover {
+    color: #00b4d8;
+  }
+
+  /* Responsive adjustments */
+  @media(max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-links {
+      margin-top: 10px;
+    }
+    .contact-banner, .feedback-form {
+      padding: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo-container">
+    <img class="logo" src="logo.png" alt="VIZI IGI Logo" />
+    <div class="title">VIZI IGI - Contact Us</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="HOME no account.html">Home</a></li>
+    <li><a href="About Us no account.html">About Us</a></li>
+    <li><a href="Subscribe no account.html">Subscribe</a></li>
+  </ul>
+  <div class="user-account" title="User Account">👤</div>
+</header>
+
+<main>
+  <!-- Contact Information Banner -->
+  <section class="contact-banner">
+    <h2>Contact Information</h2>
+    <div class="contact-info">
+      <p><strong>Email:</strong> support@viziigi.com</p>
+      <p><strong>Website URL:</strong> https://www.viziogi.com</p>
+      <p><strong>Phone Number:</strong> +256775547786</p>
+    </div>
+  </section>
+
+  <!-- Feedback Form -->
+  <section class="feedback-form">
+    <h2>Send Us Your Feedback</h2>
+    <form id="feedbackForm">
+      <label for="feedback">Your Feedback:</label><br />
+      <textarea id="feedback" name="feedback" placeholder="Write your feedback here..." required></textarea><br />
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </section>
+</main>
+
+<!-- Footer with social media icons -->
+<footer>
+  <p>&copy; 2024 VIZI IGI. All rights reserved.</p>
+  <div class="social-icons">
+    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://twitter.com" target="_blank" aria-label="Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.youtube.com" target="_blank" aria-label="YouTube" title="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.x.com" target="_blank" aria-label="X (Twitter)" title="X"><i class="fab fa-x"></i></a>
+  </div>
+</footer>
+
+<script>
+  // Handle feedback form submission
+  document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Thank you for your feedback!');
+    document.getElementById('feedback').value = '';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Premium Text to Video - Media AI Generator</title>
+<!-- Google Fonts for a premium feel -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #0D1B2A; /* Dark blue theme */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Top navigation with back button styling */
+  .top-nav {
+    padding: 15px 20px;
+    display: flex;
+    align-items: flex-start;
+    background: transparent;
+    z-index: 10;
+  }
+
+  .back-button {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #FFA500, #FF8C00);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .back-button:hover {
+    background: linear-gradient(135deg, #FF8C00, #FFA500);
+    transform: translateY(-2px);
+  }
+
+  /* Main container with centered content */
+  .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Heading with gradient and glow effect */
+  h1 {
+    font-size: 42px;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    animation: glow 3s infinite alternate;
+  }
+
+  @keyframes glow {
+    0% { text-shadow: 0 0 10px rgba(255,255,255,0.7); }
+    100% { text-shadow: 0 0 20px rgba(255,255,255,1); }
+  }
+
+  /* Instruction label */
+  label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: left;
+    width: 100%;
+    color: #f0f0f0;
+  }
+
+  /* Textarea styling with elegant appearance */
+  textarea {
+    width: 100%;
+    height: 180px;
+    padding: 20px;
+    font-size: 17px;
+    border-radius: 12px;
+    border: none;
+    resize: vertical;
+    background-color: rgba(255,255,255,0.1);
+    color: #fff;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.4);
+    outline: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+
+  textarea:focus {
+    background-color: rgba(255,255,255,0.2);
+    box-shadow: inset 0 0 20px rgba(255,255,255,0.6);
+  }
+
+  /* Generate button with premium style */
+  .generate-btn {
+    margin-top: 35px;
+    padding: 18px 40px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #FFA500, #FF8C00);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .generate-btn:disabled {
+    background: rgba(255, 165, 0, 0.6);
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+  }
+
+  .generate-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #FF8C00, #FFA500);
+    transform: translateY(-3px);
+  }
+
+  /* Responsive adjustments */
+  @media(max-width: 768px) {
+    h1 {
+      font-size: 32px;
+    }
+    textarea {
+      height: 150px;
+    }
+    .generate-btn {
+      padding: 15px 30px;
+      font-size: 18px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top navigation with back button -->
+<div class="top-nav">
+  <a href="Video generation PRO.html" class="back-button">Back to Video Generation</a>
+</div>
+
+<!-- Main content -->
+<div class="container">
+  <h1>Transform Your Ideas into Videos</h1>
+  <form id="textToVideoForm" action="/generate-text-to-video" method="POST">
+    <label for="description">Describe your vision & imagination:</label>
+    <textarea id="description" name="description" placeholder="Enter your detailed description here..." required></textarea>
+    <button type="submit" class="generate-btn" disabled id="generateBtn">Generate Video</button>
+  </form>
+</div>
+
+<script>
+  const textarea = document.getElementById('description');
+  const button = document.getElementById('generateBtn');
+
+  // Enable button only when textarea has non-whitespace input
+  textarea.addEventListener('input', () => {
+    button.disabled = textarea.value.trim() === '';
+  });
+</script>
+
+</body>
+</html>

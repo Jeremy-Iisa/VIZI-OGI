@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Support - Media AI Generator</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #0D1B2A; /* Dark blue background */
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 220px;
+        background-color: #1B263B;
+        padding-top: 60px;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+        display: flex;
+        flex-direction: column;
+        z-index: 10;
+    }
+    .sidebar a {
+        padding: 15px 20px;
+        text-decoration: none;
+        color: #fff;
+        font-size: 16px;
+        display: block;
+        transition: background 0.3s;
+    }
+    .sidebar a:hover {
+        background-color: #152b44;
+    }
+
+    /* Main content styles */
+    .main {
+        margin-left: 220px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    header {
+        background-color: #1B263B;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    /* Container styles */
+    .container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: rgba(255,255,255,0.05);
+        border-radius: 10px;
+    }
+
+    /* Heading styles */
+    h2 {
+        margin-top: 20px;
+        margin-bottom: 15px;
+        font-size: 22px;
+        color: #00b4d8;
+    }
+
+    /* Support info content styles */
+    .support-info {
+        line-height: 1.6;
+    }
+
+    /* Contact details styles */
+    .contact-details {
+        margin-top: 20px;
+    }
+
+    /* Support options list styles */
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+    /* Footer styles */
+    footer {
+        background-color: #1B263B;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        z-index: 10;
+    }
+    .footer-left {
+        display: flex;
+        align-items: center;
+    }
+    .logo {
+        height: 40px;
+        margin-right: 10px;
+    }
+    .footer-right {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .back-btn {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 16px;
+        text-decoration: none;
+        transition: background 0.3s;
+    }
+    .back-btn:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+<!-- Sidebar navigation -->
+<div class="sidebar">
+    <a href="Dashboard with account.html" id="dashboardLink">Dashboard</a>
+    <a href="profile.html" id="profileLink">Profile</a>
+    <a href="Setting with account.html" id="settingsLink">Settings</a>
+    <a href="Support with account. html.html" id="supportLink">Support</a>
+</div>
+
+<!-- Main content -->
+<div class="main">
+    <header>Support</header>
+    <div class="container">
+        <h2>Need Assistance?</h2>
+        <div class="support-info">
+            <p>We're here to help you get the most out of Media AI Generator. Whether you're experiencing technical issues, have questions about features, or need general support, our team is ready to assist you.</p>
+            <p><strong>Common Support Topics:</strong></p>
+            <ul>
+                <li>Account Management</li>
+                <li>Billing and Payments</li>
+                <li>Using the Image and Video Generator</li>
+                <li>Language and Location Settings</li>
+                <li>Technical Troubleshooting</li>
+                <li>Feature Requests and Feedback</li>
+            </ul>
+            <p>If you can't find the answer you're looking for, please contact us directly:</p>
+        </div>
+        <div class="contact-details">
+            <h3>Contact Support</h3>
+            <p><strong>Email:</strong> support@mediaaigenerator.com</p>
+            <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+            <p><strong>Live Chat:</strong> Available 9am - 6pm (Your local time)</p>
+            <p><strong>Support Center:</strong> <a href="https://support.mediaaigenerator.com" target="_blank" style="color:#00b4d8;">Visit our Support Center</a></p>
+        </div>
+        <div class="faq-section" style="margin-top:20px;">
+            <h3>Frequently Asked Questions (FAQ)</h3>
+            <ul>
+                <li><strong>How do I change my language settings?</strong> Use the Language Setting page to select your preferred language, which will translate the interface.</li>
+                <li><strong>How does location detection work?</strong> We use your device's GPS to automatically detect your location for more accurate results and localization.</li>
+                <li><strong>Is my data secure?</strong> Yes, we prioritize your privacy and ensure all data is handled securely.</li>
+                <li><strong>Can I request new features?</strong> Absolutely! Send us your feature requests via our support center or contact email.</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-left">
+            <img src="logo.jpg" alt="Logo" class="logo" />
+            <span>Media AI Generator</span>
+        </div>
+        <div class="footer-right">
+            <a href="Index.html" class="back-btn">Back to HOME</a>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>s

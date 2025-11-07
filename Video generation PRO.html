@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Premium AI Video Generator</title>
+<!-- Google Fonts for a premium look -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  /* Reset and base styles */
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    background-color: #0D1B2A;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Background video styling */
+  #background-video {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    opacity: 0.7;
+    filter: brightness(0.7);
+  }
+
+  /* Overlay for dimming the video for premium feel */
+  .video-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: -1;
+  }
+
+  /* Header styles */
+  .header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 40px;
+    background: transparent;
+  }
+
+  .back-button {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #FFA500, #FF8C00);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .back-button:hover {
+    background: linear-gradient(135deg, #FF8C00, #FFA500);
+    transform: translateY(-2px);
+  }
+
+  /* Main banner with elegant layout */
+  .banner {
+    position: relative;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    text-align: center;
+    z-index: 10;
+  }
+
+  /* Heading style with gradient and glow effect */
+  .banner-heading {
+    font-size: 56px;
+    font-weight: 700;
+    padding: 20px 40px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-radius: 15px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    animation: pulse 3s infinite ease-in-out;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  /* Content description and call-to-action */
+  .intro-text {
+    max-width: 900px;
+    margin-top: 30px;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #f0f0f0;
+  }
+
+  /* Call to action button styles */
+  .cta-button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #FFA500, #FF8C00);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .cta-button:hover {
+    background: linear-gradient(135deg, #FF8C00, #FFA500);
+    transform: translateY(-2px);
+  }
+
+  /* Features section with icons and descriptions */
+  .features-section {
+    max-width: 1200px;
+    width: 90%;
+    margin: 60px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+  }
+
+  .feature-card {
+    background: rgba(255,255,255,0.05);
+    padding: 30px;
+    border-radius: 20px;
+    flex: 1 1 250px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-5px);
+  }
+
+  .feature-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #FFD700;
+  }
+
+  .feature-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .feature-desc {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  /* Placeholders container with hyperlinks */
+  .placeholders-container {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-top: 70px;
+    justify-content: center;
+  }
+
+  .placeholder {
+    background-color: rgba(255,255,255,0.1);
+    width: 280px;
+    height: 180px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .placeholder:hover {
+    background-color: rgba(255,255,255,0.2);
+    transform: translateY(-3px);
+  }
+
+  /* Responsive adjustments */
+  @media(max-width: 768px) {
+    .banner-heading {
+      font-size: 42px;
+    }
+    .placeholders-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .placeholder {
+      width: 80%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Background video -->
+<video id="background-video" autoplay muted loop playsinline poster="your-poster-image.jpg">
+  <source src="your-premium-background.mp4" type="video/mp4" />
+  Your browser does not support HTML5 video.
+</video>
+<div class="video-overlay"></div>
+
+<!-- Header with back button -->
+<div class="header">
+  <a href="index.html" class="back-button">Back to Home</a>
+</div>
+
+<!-- Main Banner -->
+<div class="banner">
+  <div class="banner-heading">Elevate Your Video Creation</div>
+
+  <!-- Intro Text -->
+  <div class="intro-text">
+    Discover the power of AI to craft stunning videos effortlessly. Our premium tools combine advanced technology with an elegant interface. Choose your path below and unlock your creative potential.
+  </div>
+
+  <!-- Call-to-action button -->
+  <button class="cta-button" onclick="location.href='Text to video.html'">Get Started Now</button>
+
+  <!-- Features -->
+  <div class="features-section">
+    <div class="feature-card">
+      <div class="feature-icon">🚀</div>
+      <div class="feature-title">Fast & Powerful</div>
+      <div class="feature-desc">
+        Generate high-quality videos in minutes with our optimized AI engine, designed for speed and excellence.
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <div class="feature-title">Creative Templates</div>
+      <div class="feature-desc">
+        Access a library of premium templates to customize your videos easily and professionally.
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">Secure & Reliable</div>
+      <div class="feature-desc">
+        Your data is safe with us. Our infrastructure ensures your projects are private and protected.
+      </div>
+    </div>
+  </div>
+
+  <!-- Hyperlinked placeholders for options -->
+  <div class="placeholders-container">
+    <a href="Image generation PRO.html" class="placeholder">
+      Create Video<br/>from an Image
+    </a>
+    <a href="text to video PRO.html" class="placeholder">
+      Text to Video
+    </a>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Us Us - VIZI IGI</title>
+<style>
+  /* Reset styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0d1b2a; /* Dark blue background */
+    color: #ffffff;
+    line-height: 1.6;
+  }
+
+  /* Header styles */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #142b46;
+    flex-wrap: wrap;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    width: 150px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-left: 15px;
+    font-weight: bold;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin-top: 10px;
+  }
+
+  .nav-links li {
+    margin-left: 20px;
+  }
+
+  .nav-links a {
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 8px 12px;
+    transition: background-color 0.3s;
+  }
+
+  .nav-links a:hover {
+    background-color: #1b3a57;
+    border-radius: 5px;
+  }
+
+  /* User icon styles */
+  .user-account {
+    margin-left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .user-account:hover {
+    color: #00b4d8;
+  }
+
+  /* Main content styles */
+  main {
+    padding: 40px 20px;
+  }
+
+  /* Banner styles */
+  .banner {
+    background-color: #1b3a57;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .banner h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  /* Bouncing animation for subheadings */
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-15px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .bounce {
+    display: inline-block;
+  }
+
+  /* Apply bounce animation only when triggered */
+  .bounce.animate {
+    animation: bounce 2s forwards;
+  }
+
+  /* Long bouncing animation for initial load */
+  .long-bounce {
+    display: inline-block;
+    animation: bounce 4s forwards;
+  }
+
+  /* Detailed terms styles */
+  .terms-details {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* Footer styles */
+  footer {
+    background-color: #142b46;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  footer p {
+    margin-bottom: 10px;
+  }
+
+  .credits {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #cccccc;
+  }
+
+  /* Responsive adjustments */
+  @media(max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-links {
+      margin-top: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo-container">
+    <img class="logo" src="logo.jpg" alt="VIZI IGI Logo" />
+    <div class="title">VIZI IGI - About us</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="HOME no account.html">Home</a></li>
+    <li><a href="Contact no account.html">Contact Us</a></li>
+    <li><a href="Subscribe no account.html">Subscribe</a></li>
+  </ul>
+  <div class="user-account" title="User Account">👤</div>
+</header>
+
+<main>
+  <section id="achievements" class="banner">
+    <h2>Our Achievements</h2>
+    <p>We have successfully helped thousands of users achieve their goals with innovative solutions and dedicated support.</p>
+    <p>Our platform has been recognized globally for excellence in service and user satisfaction.</p>
+  </section>
+
+  <section id="terms" class="banner">
+    <h2>Terms & Conditions</h2>
+    <div class="terms-details">
+      <h3 class="bounce long-bounce">1. Acceptance of Terms</h3>
+      <p>By accessing and using our platform, you agree to comply with all applicable laws and these terms.</p>
+
+      <h3 class="bounce long-bounce">2. User Responsibilities</h3>
+      <p>Users are responsible for maintaining the confidentiality of their account information and for all activities under their account.</p>
+
+      <h3 class="bounce long-bounce">3. Privacy Policy</h3>
+      <p>We value your privacy. Please review our Privacy Policy to understand how we collect and use data.</p>
+
+      <h3 class="bounce long-bounce">4. Intellectual Property</h3>
+      <p>All content, trademarks, and intellectual property on our platform are owned by VIZI IGI or its licensors.</p>
+
+      <h3 class="bounce long-bounce">5. Termination</h3>
+      <p>We reserve the right to terminate or suspend access for violations of these terms.</p>
+
+      <h3 class="bounce long-bounce">6. Limitation of Liability</h3>
+      <p>We are not liable for any damages resulting from the use or inability to use our platform.</p>
+
+      <h3 class="bounce long-bounce">7. Changes to Terms</h3>
+      <p>We may update these terms periodically. Continued use signifies acceptance of any changes.</p>
+    </div>
+  </section>
+
+  <section id="credits" class="banner">
+    <h2>Credits</h2>
+    <p>Design and development by the VIZI IGI team.</p>
+    <p>Special thanks to our dedicated users and supporters worldwide.</p>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2024 VIZI IGI. All rights reserved.</p>
+  <div class="credits">
+    <p>Designed with care by the VIZI IGI team.</p>
+    <p>Follow us on social media for updates.</p>
+  </div>
+</footer>
+
+<script>
+  // Trigger the bounce animation only on initial load
+  window.addEventListener('load', () => {
+    const headers = document.querySelectorAll('.bounce.long-bounce');
+    headers.forEach(header => {
+      header.classList.add('animate');
+    });
+  });
+</script>
+</body>
+</html>

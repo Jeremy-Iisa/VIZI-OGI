@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Artistic Styles Web Page</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #001f3f; /* Dark blue theme */
+    color: #fff;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #003366; /* Slightly lighter dark blue */
+  }
+
+  header a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  header a:hover {
+    text-decoration: underline;
+  }
+
+  header .back-button {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .templates-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+    gap: 20px;
+  }
+
+  .template {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    background-color: #004080;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .template:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+  }
+
+  /* Preview box for each template */
+  .preview {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  /* Style previews for specific styles if needed */
+  .placeholder-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Label for style name */
+  .template-label {
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+  }
+
+  /* Check mark indicator */
+  .check-mark {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 20px;
+    color: green;
+    display: none;
+  }
+
+  .template.selected .check-mark {
+    display: block;
+  }
+
+  /* Apply button styling */
+  .apply-button {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .apply-button:hover {
+    background-color: #005bb5;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back-button" title="Back to Home">&larr; Back</a>
+</header>
+
+<h1 id="page-heading">Select an Artistic Style</h1>
+
+<div class="templates-container" id="templatesContainer">
+  <!-- Templates will be generated here -->
+</div>
+
+<!-- Hidden file input for image upload -->
+<input type="file" id="imageUploader" accept="image/*" style="display:none" />
+
+<!-- Apply button -->
+<button class="apply-button" id="applyBtn" disabled>Apply</button>
+
+<script>
+  const templatesContainer = document.getElementById('templatesContainer');
+  const applyBtn = document.getElementById('applyBtn');
+  const imageUploader = document.getElementById('imageUploader');
+
+  let selectedTemplate = null;
+
+  // Replace the placeholder images with the images you provided, arranged by style
+  const styleImages = [
+    {
+      name: 'Impressionist',
+      images: [
+        'https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1549887534-7c68084424f4?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80'
+      ]
+    },
+    {
+      name: 'Cubist',
+      images: [
+        'https://images.unsplash.com/photo-1549887534-7c68084424f4?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1549887534-7c68084424f4?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80'
+      ]
+    },
+    {
+      name: 'Watercolor',
+      images: [
+        'https://images.unsplash.com/photo-1472213630947-39f7a7a4f6d3?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1549887534-7c68084424f4?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80'
+      ]
+    },
+    {
+      name: 'Abstract',
+      images: [
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1472213630947-39f7a7a4f6d3?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80'
+      ]
+    },
+    {
+      name: 'Vintage',
+      images: [
+        'https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1549887534-7c68084424f4?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80'
+      ]
+    },
+    {
+      name: 'Pop Art',
+      images: [
+        'https://images.unsplash.com/photo-1516117172878-fd2c41f4a759?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1549887534-7c68084424f4?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80'
+      ]
+    },
+    {
+      name: 'Surrealism',
+      images: [
+        'https://images.unsplash.com/photo-1549887534-7c68084424f4?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1472213630947-39f7a7a4f6d3?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80'
+      ]
+    },
+    {
+      name: 'Minimalism',
+      images: [
+        'https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1549887534-7c68084424f4?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80'
+      ]
+    },
+    {
+      name: 'Expressionism',
+      images: [
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1549887534-7c68084424f4?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1472213630947-39f7a7a4f6d3?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80'
+      ]
+    },
+    {
+      name: 'Fauvism',
+      images: [
+        'https://images.unsplash.com/photo-1472213630947-39f7a7a4f6d3?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1549887534-7c68084424f4?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80',
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.4&auto=format&fit=crop&w=180&q=80'
+      ]
+    }
+  ];
+
+  function createTemplate(style) {
+    const { name, images } = style;
+    const imageUrl = images[Math.floor(Math.random() * images.length)];
+    const templateDiv = document.createElement('div');
+    templateDiv.className = 'template';
+
+    const img = document.createElement('img');
+    img.src = imageUrl;
+    img.className = 'placeholder-img';
+
+    const label = document.createElement('div');
+    label.className = 'template-label';
+    label.innerText = name;
+
+    const checkMark = document.createElement('div');
+    checkMark.className = 'check-mark';
+    checkMark.innerHTML = '&#10004;';
+
+    const previewDiv = document.createElement('div');
+    previewDiv.className = 'preview';
+    previewDiv.appendChild(img);
+
+    // Append to main div
+    templateDiv.appendChild(previewDiv);
+    templateDiv.appendChild(label);
+    templateDiv.appendChild(checkMark);
+
+    // Add click event
+    templateDiv.addEventListener('click', () => {
+      document.querySelectorAll('.template').forEach(t => t.classList.remove('selected'));
+      templateDiv.classList.add('selected');
+      selectedTemplate = name;
+      applyBtn.disabled = false;
+    });
+
+    return templateDiv;
+  }
+
+  // Generate templates
+  styleImages.forEach(style => {
+    const elem = createTemplate(style);
+    templatesContainer.appendChild(elem);
+  });
+
+  // Apply button handler
+  document.getElementById('applyBtn').addEventListener('click', () => {
+    if (!selectedTemplate) {
+      alert('Please select a style template.');
+      return;
+    }
+    imageUploader.click();
+  });
+
+  // Upload handler
+  imageUploader.addEventListener('change', () => {
+    if (imageUploader.files && imageUploader.files.length > 0) {
+      alert('Artistic style applied to your image.');
+      // reset
+      imageUploader.value = '';
+      document.querySelectorAll('.template').forEach(t => t.classList.remove('selected'));
+      selectedTemplate = null;
+      applyBtn.disabled = true;
+    }
+  });
+</script>
+</body>
+</html>

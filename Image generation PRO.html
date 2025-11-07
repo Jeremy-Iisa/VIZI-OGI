@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Image Generation - Premium Media AI Generator</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #0D1B2A; /* Dark blue theme */
+        color: #fff;
+    }
+
+    /* Header with Back to Home button */
+    .header {
+        position: relative;
+        width: 100%;
+        padding: 10px 20px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-end;
+        background-color: transparent;
+        z-index: 2;
+    }
+
+    .back-button {
+        padding: 8px 16px;
+        background-color: #FFA500; /* Orange for premium feel */
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background 0.3s;
+    }
+
+    .back-button:hover {
+        background-color: #ff8c00;
+    }
+
+    /* Banner styles with solid dark blue background */
+    .banner {
+        position: relative;
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #0D1B2A; /* Solid dark blue */
+        padding: 20px;
+        text-align: center;
+        z-index: 1;
+    }
+
+    /* Heading styling */
+    .banner-heading {
+        font-size: 36px;
+        font-weight: bold;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        margin-bottom: 20px;
+        color: #FFD700; /* Gold color for premium feel */
+    }
+
+    /* Input area styling */
+    .input-area {
+        width: 100%;
+        max-width: 600px;
+        background: rgba(255,255,255,0.1);
+        padding: 20px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        z-index: 1;
+    }
+
+    /* Textarea styling */
+    #descriptionInput {
+        width: 100%;
+        min-height: 100px;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        margin-bottom: 15px;
+        background-color: #333;
+        color: #fff;
+        resize: vertical;
+    }
+
+    /* Generate button styling for premium */
+    #generateBtn {
+        padding: 14px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        background-color: #FF4500; /* Bright orange/red for premium */
+        color: #fff;
+        cursor: pointer;
+        opacity: 0.6; /* Disabled state */
+        transition: background 0.3s, opacity 0.3s;
+        margin-top: 10px;
+    }
+
+    #generateBtn.enabled {
+        opacity: 1;
+    }
+
+    #generateBtn:hover {
+        background-color: #e03e00;
+    }
+
+    /* Credits or info below button */
+    .credits {
+        font-size: 14px;
+        margin-top: 10px;
+        color: #ccc;
+        text-align: center;
+    }
+
+    /* Additional content styling if needed */
+    .content {
+        padding: 20px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Header with Back to Home button -->
+<div class="header">
+  <a href="index.html" class="back-button">Back to Home</a>
+</div>
+
+<!-- Banner for premium user -->
+<div class="banner">
+  <div class="banner-heading">Premium Image Generation</div>
+  <!-- Input and generate button -->
+  <div class="input-area">
+    <textarea id="descriptionInput" placeholder="Describe your masterpiece or idea..."></textarea>
+    <button id="generateBtn" disabled>Generate</button>
+    <div class="credits">Premium feature: Unlimited high-quality image generation</div>
+  </div>
+</div>
+
+<!-- Optional: Additional content -->
+<div class="content">
+  <!-- Generated images or gallery can go here -->
+</div>
+
+<script>
+  const input = document.getElementById('descriptionInput');
+  const btn = document.getElementById('generateBtn');
+
+  // Enable the button when there's input
+  input.addEventListener('input', () => {
+    if (input.value.trim()) {
+      btn.disabled = false;
+      btn.classList.add('enabled');
+    } else {
+      btn.disabled = true;
+      btn.classList.remove('enabled');
+    }
+  });
+
+  // Handle generate button click
+  btn.addEventListener('click', () => {
+    alert('Generating high-quality image for: ' + input.value);
+    // Call your premium API logic here
+  });
+</script>
+
+</body>
+</html>
